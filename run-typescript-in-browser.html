@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="fullscreen">
   <head>
-    <title>Testing typescriptServices.js</title>
+    <title>Transpile Typescript to Javascript using typescriptServices.js</title>
     <meta charset="UTF-8">
     <meta name="description" content="Running the typescript transpiler in typescriptServices.js.">
     <meta name="keywords" content="TpyeScript, transpile, compile, javascript, online, jit, browser">
@@ -15,6 +15,12 @@
     <!-- This custom script handles the form data -->
     <script src="run-typescript-in-browser.js"></script>
 
+    <script>
+      window.onTypescriptsLoaded = function(status) {
+         console.log(status ? '===Typescript successfully loaded.' : '===Error loading typescript.' );
+      };
+    </script>
+    
     <!-- THIS IS A TYPESCRIPT FILE -->
     <script language="typescript" type="text/typescript" src="demoscript1.ts"></script>
     
