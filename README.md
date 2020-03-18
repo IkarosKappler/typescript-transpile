@@ -16,6 +16,7 @@ Load your typescript
    <script src="lib/tslib.js"></script>
    <!-- This custom script handles the form data -->
    <script src="run-typescript-in-browser.js"></script>
+```
 
 Load your typescript (the loaded will look for language=typescript)
 ```html
