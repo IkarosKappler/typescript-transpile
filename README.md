@@ -8,7 +8,7 @@ in the browser.
 This script uses https://klesun-misc.github.io/TypeScript/lib/typescriptServices.js (https://github.com/microsoft/TypeScript/blob/master/lib/typescriptServices.d.ts)
 and tslib.js.
 
-Load your typescript
+## Load the required libraries
 ```html
    <!-- Load the typescript compiler/transpiler -->
    <script src="lib/typescriptService.js"></script>
@@ -18,12 +18,12 @@ Load your typescript
    <script src="run-typescript-in-browser.js"></script>
 ```
 
-Load your typescript (the loaded will look for language=typescript)
+## Load your typescript (the loader will look for language=typescript)
 ```html
    <script language="typescript" type="text/typescript" src="demoscript1.ts"></script>
 ```
 
-Wait for the typescripts to be loaded and transpiled
+## Wait for the typescripts to be loaded and transpiled
 ```javascript
    window.onTypescriptsLoaded = function(status) {
       console.log( status
@@ -33,5 +33,12 @@ Wait for the typescripts to be loaded and transpiled
    };
 
 ```
+
+
+### Sources
+* https://github.com/microsoft/tslib
+* https://klesun-misc.github.io/TypeScript/lib/typescriptServices.js
+* https://github.com/microsoft/TypeScript/blob/master/lib/typescriptServices.d.ts
+
 
 Have fun!
