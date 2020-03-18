@@ -9,9 +9,9 @@
     <meta name="date" content="2020-03-17">
 
     <!-- Load the typescript compiler/transpiler -->
-    <script src="typescriptService.js"></script>
+    <script src="../lib/typescriptService.js"></script>
     <!-- Load the helper functions library for Typescript -->
-    <script src="tslib.js"></script>
+    <script src="../lib/tslib.js"></script>
     <!-- This custom script handles the form data -->
     <script src="index.js"></script>
     
@@ -20,6 +20,7 @@
   <body>
     <h1>Transpile Typescript online</h1>
     <h3>Using https://klesun-misc.github.io/TypeScript/lib/typescriptServices.js (<a href="https://github.com/microsoft/TypeScript/blob/master/lib/typescriptServices.d.ts">Source</a>)</h3>
+    (tslib.js required: https://github.com/microsoft/tslib)<br>
     Input (Javascript):<br>
     <textarea id="input" cols="100" rows="15">
 const mytext : string = "Test";
