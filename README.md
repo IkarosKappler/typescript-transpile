@@ -14,13 +14,18 @@ and tslib.js.
    <script src="lib/typescriptService.js"></script>
    <!-- Load the helper functions library for Typescript -->
    <script src="lib/tslib.js"></script>
-   <!-- This custom script handles the form data -->
+   <!-- This runs your typescripts -->
    <script src="run-typescript-in-browser.js"></script>
 ```
 
 ## Load your typescript (the loader will look for language=typescript)
 ```html
+   <!-- THIS IS A TYPESCRIPT FILE -->
    <script language="typescript" type="text/typescript" src="demoscript1.ts"></script>
+   <!-- AND THIS IS AN INLINE TYPESCRIPT -->
+   <script language="typescript">
+      class C { }
+   </script>
 ```
 
 ## Wait for the typescripts to be loaded and transpiled

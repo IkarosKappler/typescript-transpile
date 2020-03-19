@@ -51,7 +51,6 @@
      **/
     var transpileCodes = function( tsCodes, pathNames ) {
 	const head = document.getElementsByTagName('head')[0];
-	// console.log('Transpiling '+tsCodes.length+' codes');
 	var errorCount = 0;
 	for( var i = 0; i < tsCodes.length; i++ ) {
 	    try {
@@ -78,28 +77,42 @@
 	var resourcesLoaded = 0;
 	var tsCodes = new Array(scriptNodes.length);
 	var pathNames = new Array(scriptNodes.length);
+	var checkComplete = function() { 
+	    // If all n resources have been loaded, transpile them
+	    // in exact the original order.
+	    if( resourcesLoaded == scriptNodes.length ) {
+		var errorCount = transpileCodes( tsCodes, pathNames );
+		if( typeof window.onTypescriptsLoaded === "function" )
+		    window.onTypescriptsLoaded(errorCount==0);
+	    }
+	};
+	// Handle all typescripts 
 	for( var i = 0; i < scriptNodes.length; i++ ) {
 	    var src = scriptNodes[i].getAttribute('src');
-	    pathNames[i] = src;
-	    // Call this inside a closure to avoid collisions.
-	    (function(path,index,maxCount) {
-		requestResource( path,
-				 function(result) {
-				     // Resource has been loaded.
-				     tsCodes[index] = result;
-				     // If all n resources have been loaded, transpile them
-				     // in exact the original order.
-				     if( ++resourcesLoaded == maxCount ) {
-					 var errorCount = transpileCodes( tsCodes, pathNames );
-					 if( typeof window.onTypescriptsLoaded === "function" )
-					     window.onTypescriptsLoaded(errorCount==0);
+	    if( src == null || typeof src === "undefined" ) {
+		// This is an inline-script
+		pathNames[i] = "[inline]";
+		tsCodes[i] = scriptNodes[i].innerHTML;
+		resourcesLoaded++;
+		checkComplete();
+	    } else {
+		// This is a remote resource
+		pathNames[i] = src;
+		// Call this inside a closure to avoid collisions.
+		(function(path,index) {
+		    requestResource( path,
+				     function(result) {
+					 // Resource has been loaded.
+					 tsCodes[index] = result;
+					 resourcesLoaded++;
+					 checkComplete();
+				     },
+				     function(errorCode) {
+					 console.warn("Failed to load source '"+path+"'. Error code "+errorCode+".")
 				     }
-				 },
-				 function(errorCode) {
-				     console.warn("Failed to load source '"+path+"'. Error code "+errorCode+".")
-				 }
-			       );
-	    })(src,i,scriptNodes.length);
+				   );
+		})(src,i);
+	    }
 	}
     }
 

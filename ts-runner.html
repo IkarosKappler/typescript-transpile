@@ -12,8 +12,8 @@
     <script src="lib/typescriptService.js"></script>
     <!-- Load the helper functions library for Typescript -->
     <script src="lib/tslib.js"></script>
-    <!-- This custom script handles the form data -->
-    <script src="run-typescript-in-browser.js"></script>
+    <!-- This runs your typescripts -->
+    <script src="ts-runner.js"></script>
 
     <script>
       window.onTypescriptsLoaded = function(status) {
@@ -23,6 +23,11 @@
     
     <!-- THIS IS A TYPESCRIPT FILE -->
     <script language="typescript" type="text/typescript" src="demoscript1.ts"></script>
+    <!-- AND THIS IS AN INLINE TYPESCRIPT -->
+    <script language="typescript">
+      console.log('Running inline typescript');
+      class C { }
+    </script>
     
     <link rel="stylesheet" href="style.css"> 
   </head>
