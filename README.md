@@ -8,6 +8,8 @@ in the browser.
 This script uses https://klesun-misc.github.io/TypeScript/lib/typescriptServices.js (https://github.com/microsoft/TypeScript/blob/master/lib/typescriptServices.d.ts)
 and tslib.js.
 
+Here is a live [Demo](https://www.int2byte.de/public/typescript-transpile/ts-runner.html "Demo").
+
 ## Load the required libraries
 ```html
    <!-- Load the typescript compiler/transpiler -->
