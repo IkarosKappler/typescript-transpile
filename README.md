@@ -10,6 +10,18 @@ and tslib.js.
 
 Here is a live [Demo](https://www.int2byte.de/public/typescript-transpile/ts-runner.html "Demo").
 
+
+
+### Note
+This is meant as a sandbox script helping to execute mixed Javascript and Typescript
+content during the development process.
+
+Due to performance reasons it is not a good idea to use this in production.
+
+Consider compiling your typescript files to JS instead.
+
+
+
 ## Load the required libraries
 ```html
    <!-- Load the typescript compiler/transpiler -->
