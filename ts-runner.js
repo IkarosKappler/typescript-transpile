@@ -17,7 +17,7 @@
 (function(_context) {
 
     // Expose the runner to the global context
-    _context.TSRunner = _context.TSRunner || function() {
+    _context.TSRunner = _context.TSRunner || function( onTypescriptsLoaded ) {
 	
 	/**
 	 * Request to load the given resource (specified by 'path', relative or absolute)
@@ -85,8 +85,8 @@
 		// in exact the original order.
 		if( resourcesLoaded == scriptNodes.length ) {
 		    var errorCount = transpileCodes( tsCodes, pathNames );
-		    if( typeof window.onTypescriptsLoaded === "function" )
-			window.onTypescriptsLoaded(errorCount==0);
+		    if( typeof onTypescriptsLoaded === "function" )
+			onTypescriptsLoaded(errorCount==0);
 		}
 	    };
 	    // Handle all typescripts 
