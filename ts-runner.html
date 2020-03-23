@@ -16,9 +16,13 @@
     <script src="ts-runner.js"></script>
 
     <script>
-      window.onTypescriptsLoaded = function(status) {
-         console.log(status ? '===Typescript successfully loaded.' : '===Error loading typescript.' );
-      };
+      // Start the process when the document is fully loaded.
+      window.addEventListener('load', function() {
+         var tsRunner = new TSRunner( function(status) {
+            console.log(status ? '===Typescript successfully loaded.' : '===Error loading typescript.' );
+         } );
+         tsRunner.processTypescript();
+      } );
     </script>
     
     <!-- THIS IS A TYPESCRIPT FILE -->

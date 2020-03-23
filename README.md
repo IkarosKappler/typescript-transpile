@@ -32,13 +32,16 @@ Here is a live [Demo](https://www.int2byte.de/public/typescript-transpile/ts-run
 
 ## Wait for the typescripts to be loaded and transpiled
 ```javascript
-   window.onTypescriptsLoaded = function(status) {
-      console.log( status
-	 ? '===Typescript successfully loaded.'
-	 : '===Error loading typescript.'
-      );
-   };
-
+    // Start the process when the document is fully loaded.
+    window.addEventListener('load', function() {
+       var tsRunner = new TSRunner( function(status) {
+          console.log( status
+	               ? '===Typescript successfully loaded.'
+		       : '===Error loading typescript.'
+          );
+       } );
+       tsRunner.processTypescript();
+    } );
 ```
 
 
